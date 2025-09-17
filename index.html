@@ -1,0 +1,988 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Angello Aguilar - Consejo de Juventud Barrancabermeja</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.6;
+            color: #1a1a1a;
+            font-weight: 400;
+        }
+
+        /* Header */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            border-bottom: 1px solid rgba(0,0,0,0.1);
+        }
+
+        .nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 40px;
+            height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            height: 80px;
+            width: 20px;
+        }
+
+        .logo img {
+            height: 100%;
+            width: auto;
+            object-fit: contain;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 40px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #4b5563;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: #2563eb;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 120px 0 80px;
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 40px;
+        }
+
+        .hero-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+        }
+
+        .hero-text h1 {
+            font-size: 56px;
+            font-weight: 800;
+            line-height: 1.1;
+            color: #0f172a;
+            margin-bottom: 24px;
+        }
+
+        .hero-text .name-highlight {
+            color: #2563eb;
+        }
+
+        .hero-subtitle {
+            font-size: 24px;
+            font-weight: 600;
+            color: #059669;
+            margin-bottom: 32px;
+            letter-spacing: -0.025em;
+        }
+
+        .hero-description {
+            font-size: 18px;
+            color: #64748b;
+            margin-bottom: 40px;
+            line-height: 1.7;
+        }
+
+        .tarjeton-number {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            background: #ef4444;
+            color: white;
+            padding: 12px 24px;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 18px;
+            margin-bottom: 40px;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 16px;
+        }
+
+        .btn-primary {
+            background: #2563eb;
+            color: white;
+            padding: 16px 32px;
+            border: none;
+            border-radius: 12px;
+            font-size: 16px;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .btn-primary:hover {
+            background: #1d4ed8;
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: #2563eb;
+            padding: 16px 32px;
+            border: 2px solid #2563eb;
+            border-radius: 12px;
+            font-size: 16px;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .btn-secondary:hover {
+            background: #2563eb;
+            color: white;
+        }
+
+        .hero-image {
+            position: relative;
+        }
+
+        .hero-image img {
+            width: 100%;
+            height: 600px;
+            object-fit: cover;
+            border-radius: 24px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+        }
+
+        .candidate-info {
+            position: absolute;
+            bottom: 24px;
+            left: 24px;
+            right: 24px;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 24px;
+            border-radius: 16px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .candidate-info h3 {
+            font-size: 20px;
+            font-weight: 700;
+            color: #0f172a;
+            margin-bottom: 8px;
+        }
+
+        .candidate-info p {
+            color: #64748b;
+            font-size: 14px;
+        }
+
+        /* Stats Section */
+        .stats {
+            padding: 80px 0;
+            background: white;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 60px;
+            text-align: center;
+        }
+
+        .stat-item h3 {
+            font-size: 48px;
+            font-weight: 800;
+            color: #2563eb;
+            margin-bottom: 12px;
+        }
+
+        .stat-item p {
+            font-size: 16px;
+            color: #64748b;
+            font-weight: 500;
+        }
+
+        /* Propuestas Section */
+        .propuestas {
+            padding: 80px 0;
+            background: #f8fafc;
+        }
+
+        .section-header {
+            text-align: center;
+            max-width: 600px;
+            margin: 0 auto 80px;
+        }
+
+        .section-title {
+            font-size: 42px;
+            font-weight: 800;
+            color: #0f172a;
+            margin-bottom: 16px;
+            line-height: 1.2;
+        }
+
+        .section-subtitle {
+            font-size: 18px;
+            color: #64748b;
+            line-height: 1.7;
+        }
+
+        .propuestas-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 40px;
+        }
+
+        .propuesta-card {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            border: 1px solid #e2e8f0;
+            transition: all 0.3s ease;
+        }
+
+        .propuesta-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+
+        .propuesta-icon {
+            width: 60px;
+            height: 60px;
+            background: #dbeafe;
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            margin-bottom: 24px;
+        }
+
+        .propuesta-card h3 {
+            font-size: 20px;
+            font-weight: 700;
+            color: #0f172a;
+            margin-bottom: 16px;
+        }
+
+        .propuesta-card p {
+            color: #64748b;
+            line-height: 1.6;
+        }
+
+        /* Video Section - ARREGLADO */
+        .video-section {
+            padding: 80px 0;
+            background: white;
+        }
+
+        .video-container {
+            max-width: 400px;
+            margin: 0 auto;
+            position: relative;
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.3);
+        }
+
+        .video-container video {
+            width: 100%;
+            height: 700px;
+            object-fit: cover;
+            display: block;
+            background: #000;
+            border-radius: 24px;
+        }
+
+        /* Custom play button overlay */
+        .custom-play-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.4);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            z-index: 2;
+        }
+
+        .custom-play-overlay.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .custom-play-button {
+            width: 80px;
+            height: 80px;
+            background: rgba(255, 255, 255, 0.9);
+            border: none;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+        }
+
+        .custom-play-button:hover {
+            transform: scale(1.1);
+            background: white;
+        }
+
+        .custom-play-button svg {
+            width: 24px;
+            height: 24px;
+            fill: #2563eb;
+            margin-left: 3px;
+        }
+
+        /* Gallery Section */
+        .gallery {
+            padding: 80px 0;
+            background: #f8fafc;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+        }
+
+        .gallery-item {
+            aspect-ratio: 1;
+            border-radius: 16px;
+            overflow: hidden;
+            position: relative;
+            transition: transform 0.3s ease;
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.05);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, transparent 50%);
+            display: flex;
+            align-items: flex-end;
+            padding: 20px;
+        }
+
+        .gallery-text {
+            color: white;
+            font-weight: 600;
+            font-size: 14px;
+        }
+
+        /* Footer */
+        .footer {
+            background: #0f172a;
+            color: white;
+            padding: 80px 0 40px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 80px;
+            margin-bottom: 40px;
+        }
+
+        .footer-brand h3 {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 16px;
+            color: #2563eb;
+        }
+
+        .footer-brand p {
+            color: #94a3b8;
+            line-height: 1.6;
+            margin-bottom: 24px;
+        }
+
+        .election-info {
+            background: #1e293b;
+            padding: 24px;
+            border-radius: 12px;
+            border-left: 4px solid #ef4444;
+        }
+
+        .election-info h4 {
+            color: #ef4444;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .election-info p {
+            color: #cbd5e1;
+            font-size: 14px;
+        }
+
+        .footer-links h4 {
+            font-weight: 600;
+            margin-bottom: 16px;
+        }
+
+        .footer-links ul {
+            list-style: none;
+        }
+
+        .footer-links a {
+            color: #94a3b8;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: #2563eb;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 16px;
+        }
+
+        .social-link {
+            width: 44px;
+            height: 44px;
+            background: #1e293b;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #94a3b8;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .social-link:hover {
+            background: #2563eb;
+            color: white;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid #1e293b;
+            padding-top: 40px;
+            text-align: center;
+            color: #64748b;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .container {
+                padding: 0 30px;
+            }
+
+            .hero-content {
+                gap: 60px;
+            }
+
+            .hero-text h1 {
+                font-size: 48px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 20px;
+            }
+
+            .nav {
+                padding: 0 20px;
+                height: 70px;
+            }
+
+            .logo {
+                height: 40px;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .hero {
+                padding: 100px 0 60px;
+            }
+
+            .hero-content {
+                grid-template-columns: 1fr;
+                gap: 40px;
+                text-align: center;
+            }
+
+            .hero-text h1 {
+                font-size: 36px;
+                margin-bottom: 16px;
+            }
+
+            .hero-subtitle {
+                font-size: 20px;
+                margin-bottom: 24px;
+            }
+
+            .hero-description {
+                font-size: 16px;
+                margin-bottom: 32px;
+            }
+
+            .tarjeton-number {
+                font-size: 16px;
+                padding: 10px 20px;
+                margin-bottom: 32px;
+            }
+
+            .hero-image img {
+                height: 400px;
+            }
+
+            .candidate-info {
+                padding: 20px;
+            }
+
+            .candidate-info h3 {
+                font-size: 18px;
+            }
+
+            .stats {
+                padding: 60px 0;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .stat-item h3 {
+                font-size: 36px;
+            }
+
+            .section-title {
+                font-size: 32px;
+            }
+
+            .section-subtitle {
+                font-size: 16px;
+            }
+
+            .propuestas {
+                padding: 60px 0;
+            }
+
+            .propuestas-grid {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+
+            .propuesta-card {
+                padding: 30px;
+            }
+
+            .video-section {
+                padding: 60px 0;
+            }
+
+            .video-container {
+                max-width: 320px;
+            }
+            
+            .video-container video {
+                height: 500px;
+            }
+            
+            .custom-play-button {
+                width: 60px;
+                height: 60px;
+            }
+
+            .gallery {
+                padding: 60px 0;
+            }
+
+            .gallery-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 16px;
+            }
+
+            .footer {
+                padding: 60px 0 30px;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .btn-primary,
+            .btn-secondary {
+                width: 100%;
+                max-width: 280px;
+                text-align: center;
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-text h1 {
+                font-size: 28px;
+            }
+
+            .hero-subtitle {
+                font-size: 18px;
+            }
+
+            .hero-description {
+                font-size: 15px;
+            }
+
+            .section-title {
+                font-size: 28px;
+            }
+
+            .propuesta-card {
+                padding: 24px;
+            }
+
+            .propuesta-card h3 {
+                font-size: 18px;
+            }
+
+            .gallery-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .video-container {
+                max-width: 280px;
+            }
+            
+            .video-container video {
+                height: 400px;
+            }
+
+            .custom-play-button {
+                width: 50px;
+                height: 50px;
+            }
+
+            .stat-item h3 {
+                font-size: 32px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="nav">
+            <div class="logo">
+                <img src="content/logo-pica.png" alt="Jóvenes es Tiempo Logo">
+            </div>
+            <ul class="nav-links">
+                <li><a href="#inicio">Inicio</a></li>
+                <li><a href="#propuestas">Propuestas</a></li>
+                <li><a href="#video">Video</a></li>
+                <li><a href="#galeria">Galería</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="inicio">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <div class="tarjeton-number">
+                        🗳️ TARJETÓN #11
+                    </div>
+                    <h1>ANGELLO <span class="name-highlight">AGUILAR</span></h1>
+                    <div class="hero-subtitle">Consejo de Juventud Barrancabermeja</div>
+                    <p class="hero-description">
+                        Soy un joven con ganas de transformar. Quiero ser consejero juvenil para abrir más espacios donde los jóvenes podamos expresarnos, crecer y ser escuchados. Creo en una juventud unida, con voz propia y comprometida con el cambio.
+                    </p>
+                </div>
+                <div class="hero-image">
+                    <img src="content/angelo.jpg" alt="Angello Aguilar">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <h3>17</h3>
+                    <p>Años de edad</p>
+                </div>
+                <div class="stat-item">
+                    <h3>11</h3>
+                    <p>Número de tarjetón</p>
+                </div>
+                <div class="stat-item">
+                    <h3>2025</h3>
+                    <p>Es nuestro momento</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Propuestas Section -->
+    <section class="propuestas" id="propuestas">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Nuestras Propuestas</h2>
+                <p class="section-subtitle">
+                    Un plan integral para fortalecer la participación juvenil en Barrancabermeja
+                </p>
+            </div>
+            <div class="propuestas-grid">
+                <div class="propuesta-card">
+                    <div class="propuesta-icon">🎯</div>
+                    <h3>Espacios de Expresión Juvenil</h3>
+                    <p>Crear más espacios donde los jóvenes puedan expresarse libremente, compartir ideas innovadoras y ser protagonistas del cambio en nuestra ciudad.</p>
+                </div>
+                <div class="propuesta-card">
+                    <div class="propuesta-icon">📚</div>
+                    <h3>Oportunidades Educativas</h3>
+                    <p>Gestionar oportunidades reales para todos los jóvenes de Barrancabermeja, promoviendo la educación de calidad y el desarrollo de habilidades.</p>
+                </div>
+                <div class="propuesta-card">
+                    <div class="propuesta-icon">🤝</div>
+                    <h3>Juventud Unida y Participativa</h3>
+                    <p>Fomentar una juventud unida, valiente y con voz propia, comprometida activamente con el desarrollo sostenible de nuestra comunidad.</p>
+                </div>
+                <div class="propuesta-card">
+                    <div class="propuesta-icon">🌟</div>
+                    <h3>Liderazgo Juvenil</h3>
+                    <p>Es tiempo de que los jóvenes seamos protagonistas de nuestro propio futuro y del crecimiento integral de Barrancabermeja.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Video Section - COMPLETAMENTE ARREGLADO -->
+    <section class="video-section" id="video">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Conoce Nuestra Propuesta</h2>
+                <p class="section-subtitle">
+                    Descubre por qué Angello Aguilar es la mejor opción para representar a los jóvenes
+                </p>
+            </div>
+            <div class="video-container">
+                <video id="campaignVideo" preload="metadata">
+                    <source src="content/angelo video.mp4" type="video/mp4">
+                    Tu navegador no soporta el elemento de video.
+                </video>
+                <div class="custom-play-overlay" id="playOverlay">
+                    <button class="custom-play-button" id="playButton">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M8 5v14l11-7z"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section class="gallery" id="galeria">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Nuestro Movimiento en Acción</h2>
+                <p class="section-subtitle">
+                    Momentos destacados de nuestra campaña y trabajo comunitario
+                </p>
+            </div>
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <img src="content/angelo1.jpg" alt="Campaña en territorio">
+                    <div class="gallery-overlay">
+                        <div class="gallery-text">Campaña en Territorio</div>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="content/angelo2.jpg" alt="Jóvenes participando">
+                    <div class="gallery-overlay">
+                        <div class="gallery-text">Jóvenes Participando</div>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="content/angelo3.jpg" alt="Eventos comunitarios">
+                    <div class="gallery-overlay">
+                        <div class="gallery-text">Eventos Comunitarios</div>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="content/tarjeton.jpg" alt="Propuestas juveniles">
+                    <div class="gallery-overlay">
+                        <div class="gallery-text">Tarjetón</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <h3>Jóvenes es Tiempo</h3>
+                    <p>Un movimiento juvenil comprometido con el futuro de Barrancabermeja. Trabajamos por crear oportunidades reales para todos los jóvenes de nuestra ciudad.</p>
+                    <div class="election-info">
+                        <h4>Elecciones 2025</h4>
+                        <p>Consejos Municipales y Locales de Juventud</p>
+                        <p>19 de Octubre de 2025</p>
+                        <p><strong>TARJETÓN #11 - FUNDACIÓN TIEMPO DE SANTANDER</strong></p>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <h4>Enlaces Rápidos</h4>
+                    <ul>
+                        <li><a href="#inicio">Inicio</a></li>
+                        <li><a href="#propuestas">Propuestas</a></li>
+                        <li><a href="#video">Video</a></li>
+                        <li><a href="#galeria">Galería</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Síguenos</h4>
+                    <div class="social-links">
+
+                        <a href="https://www.instagram.com/estiempomov?igsh=cnpzdHFrN2dtN2Zx" class="social-link" title="Instagram">📷</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Jóvenes es Tiempo Barrancabermeja. Todos los derechos reservados.</p>
+                <p style="margin-top: 8px; font-style: italic;">"¡Es tiempo de abrir oportunidades reales para todos los jóvenes!"</p>
+            </div>
+        </div>
+    </footer>
+
+  <script>
+        // SCRIPT DEL VIDEO ARREGLADO
+        document.addEventListener('DOMContentLoaded', function() {
+            const video = document.getElementById('campaignVideo');
+            const playOverlay = document.getElementById('playOverlay');
+            const playButton = document.getElementById('playButton');
+
+            // Función para reproducir el video
+            function playVideo() {
+                video.muted = false; // Quitar mute
+                video.play().then(() => {
+                    playOverlay.classList.add('hidden');
+                }).catch((error) => {
+                    console.log('Error al reproducir video:', error);
+                    // Si falla, intentar con mute primero
+                    video.muted = true;
+                    video.play().then(() => {
+                        playOverlay.classList.add('hidden');
+                        // Después de un segundo, quitar mute
+                        setTimeout(() => {
+                            video.muted = false;
+                        }, 1000);
+                    });
+                });
+            }
+
+            // Click en el overlay para reproducir
+            playOverlay.addEventListener('click', playVideo);
+            playButton.addEventListener('click', playVideo);
+
+            // Mostrar overlay cuando el video se pausa
+            video.addEventListener('pause', function() {
+                if (!video.ended) {
+                    playOverlay.classList.remove('hidden');
+                }
+            });
+
+            // Ocultar overlay cuando el video se reproduce
+            video.addEventListener('play', function() {
+                playOverlay.classList.add('hidden');
+            });
+
+            // Al finalizar el video, mostrar overlay
+            video.addEventListener('ended', function() {
+                playOverlay.classList.remove('hidden');
+            });
+        });
+
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Header scroll effect
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('.header');
+            if (window.scrollY > 100) {
+                header.style.background = 'rgba(255, 255, 255, 0.98)';
+            } else {
+                header.style.background = 'rgba(255, 255, 255, 0.95)';
+            }
+        });
+</script>
